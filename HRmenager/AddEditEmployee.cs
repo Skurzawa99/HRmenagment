@@ -57,21 +57,26 @@ namespace HRmenager
 
                 _employeeId = highestId == null ? 1 : highestId.EmployeeId + 1; 
             }
-
-            var employee = new Employee
+            try
             {
-                EmployeeId = _employeeId,
-                Name = tbName.Text,
-                LastName = tbLastName.Text,
-                DateToEmployee = dtpToEmployee.Text,
-                Money = GetMoney(),
-                Comments = tbComments.Text,
-                GroupId = 1,
-            };
-            employees.Add(employee);
-
-            _fileHelper.SerializeToFile(employees);
-            Close();
+                var employee = new Employee
+                {
+                    EmployeeId = _employeeId,
+                    Name = tbName.Text,
+                    LastName = tbLastName.Text,
+                    DateToEmployee = dtpToEmployee.Text,
+                    Money = GetMoney(),
+                    Comments = tbComments.Text,
+                    GroupId = 1,
+                };
+                employees.Add(employee);
+                _fileHelper.SerializeToFile(employees);
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void FillTextBoxes()
@@ -87,9 +92,14 @@ namespace HRmenager
         {
             if (!int.TryParse(tbMoney.Text, out int Money))
             {
-                return 0;
+                throw new Exception("Podaj wartość zarobków");
             }
             return Money;
+        }
+
+        private void btCancel_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

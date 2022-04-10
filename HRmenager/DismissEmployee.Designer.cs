@@ -112,6 +112,7 @@
             this.btCancelDismiss.TabIndex = 21;
             this.btCancelDismiss.Text = "Anuluj";
             this.btCancelDismiss.UseVisualStyleBackColor = true;
+            this.btCancelDismiss.Click += new System.EventHandler(this.btCancelDismiss_Click);
             // 
             // tbIdEmployeeDismiss
             // 

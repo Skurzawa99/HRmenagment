@@ -56,7 +56,12 @@ namespace HRmenager
 
             _fileHelper.SerializeToFile(employees);
             Close();
-        }   
+        }
+
+        private void btCancelDismiss_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
 

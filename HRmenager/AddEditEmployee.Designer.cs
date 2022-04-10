@@ -134,6 +134,7 @@
             this.btCancel.TabIndex = 16;
             this.btCancel.Text = "Anuluj";
             this.btCancel.UseVisualStyleBackColor = true;
+            this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
             // dtpToEmployee
             // 
